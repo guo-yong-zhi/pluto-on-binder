@@ -1,5 +1,10 @@
 [deps]
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
 Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+WordCloud = "6385f0a0-cb03-45b6-9089-4e0acc74b26b"
 
 [compat]
 julia = "1.8"
