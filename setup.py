@@ -14,5 +14,5 @@ setuptools.setup(
 )
 
 # because this is a demo of Pluto, we add some popular packages to the global package env and precompile
-import os
-os.system('julia -e "import Pkg; Pkg.add([\\"PlutoUI\\", \\"Pluto\\", \\"WordCloud\\", \\"HTTP\\", \\"ImageIO\\", \\"Images\\"]); Pkg.precompile()"')
+#import os
+#os.system('julia -e "import Pkg; Pkg.add([\\"PlutoUI\\", \\"Pluto\\", \\"WordCloud\\", \\"HTTP\\", \\"ImageIO\\", \\"Images\\"]); Pkg.precompile()"')
