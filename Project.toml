@@ -4,6 +4,8 @@ ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
 Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 WordCloud = "6385f0a0-cb03-45b6-9089-4e0acc74b26b"
+PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"
+CondaPkg="992eb4ea-22a4-4c89-a5bb-47a3300528ab"
 
 [compat]
 julia = "1.8"
