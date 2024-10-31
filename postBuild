@@ -3,6 +3,31 @@ set -ex
 
 echo "hello from postBuild"
 
+# https://github.com/jupyter/docker-stacks/pull/2044
+if [ "$(uname -m)" == "x86_64" ]; then
+    # See https://github.com/JuliaCI/julia-buildkite/blob/70bde73f6cb17d4381b62236fc2d96b1c7acbba7/utilities/build_envs.sh#L24
+    # for an explanation of these options
+    export JULIA_CPU_TARGET="generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1)"
+elif [ "$(uname -m)" == "aarch64" ]; then
+    # See https://github.com/JuliaCI/julia-buildkite/blob/70bde73f6cb17d4381b62236fc2d96b1c7acbba7/utilities/build_envs.sh#L54
+    # for an explanation of these options
+    export JULIA_CPU_TARGET="generic;cortex-a57;thunderx2t99;carmel"
+fi
+
+# Install Julia packages
+julia -e 'using CondaPkg; CondaPkg.add("jieba")'
+
+wget https://github.com/google/fonts/archive/main.tar.gz -O gf.tar.gz && \
+  tar -xf gf.tar.gz && \
+  mkdir -p ~/.fonts/truetype/google-fonts && \
+  find $PWD/fonts-main/ -name "*.ttf" -exec install -m644 {} ~/.fonts/truetype/google-fonts/ \; || return 1 && \
+  rm -f gf.tar.gz && \
+  # Remove the extracted fonts directory
+  rm -rf $PWD/fonts-main && \
+  # Remove the following line if you're installing more applications after this RUN command and you have errors while installing them
+  # rm -rf /var/cache/* && \
+  fc-cache -f
+
 # Optimziation:
 # Start Pluto, open new notebook, shut down notebook.
 # This should precompile the PlutoRunner boot environment, so it launches faster when opening the new notebook on the live binder.
